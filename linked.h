@@ -9,10 +9,6 @@ class LinkedList : public List<T> {
     public:
         LinkedList() : List<T>() {}
 
-        T front() {
-            // TODO
-        }
-
         T back() {
             // TODO
         }

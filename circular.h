@@ -8,10 +8,6 @@ class CircularLinkedList : public List<T> {
     public:
         CircularLinkedList() : List<T>() {}
 
-        T front() {
-            // TODO
-        }
-
         T back() {
             // TODO
         }

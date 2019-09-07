@@ -1,0 +1,3 @@
+/home/fabrizio/Desktop/ADS/lists-fabriziofranco/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/fabrizio/Desktop/ADS/lists-fabriziofranco/cmake-build-debug/CMakeFiles/lists_fabriziofranco.dir
+/home/fabrizio/Desktop/ADS/lists-fabriziofranco/cmake-build-debug/CMakeFiles/edit_cache.dir
