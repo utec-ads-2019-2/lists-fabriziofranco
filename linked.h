@@ -10,47 +10,90 @@ class LinkedList : public List<T> {
         LinkedList() : List<T>() {}
 
         T back() {
-            // TODO
+            if(this->tail!= nullptr)
+                return this->tail->data;
+            throw out_of_range("This list is empty");
         }
 
         void push_front(T value) {
-            // TODO
+            auto nodo_nuevo=new Node<T>();
+            nodo_nuevo->data=value;
+            nodo_nuevo->next=this->head;
+            if(this->head==nullptr)
+                this->tail=nodo_nuevo;
+            else{
+                this->head->prev=nodo_nuevo;}
+            this->head=nodo_nuevo;
+            this->nodes++;
         }
 
         void push_back(T value) {
-            // TODO
+            auto nodo_nuevo=new Node<T>();
+            nodo_nuevo->data=value;
+            if(this->head== nullptr){
+                this->head=nodo_nuevo;}
+            else{
+                nodo_nuevo->prev=this->tail;
+                this->tail->next=nodo_nuevo;}
+            this->tail=nodo_nuevo;
+            this->nodes++;
         }
 
         void pop_front() {
-            // TODO
+            if(this->head!= nullptr){
+                auto temp=this->head;
+                this->head=this->head->next;
+                delete temp;
+                this->nodes--;
+                if(this->nodes==0){
+                    this->tail= nullptr;
+                }
+                else{
+                this->head->prev= nullptr;}
+            }
         }
 
         void pop_back() {
-            // TODO
-        }
+            if(this->head!= nullptr){
+                auto temp=this->tail;
+                this->tail=this->tail->prev;
+                delete temp;
+                this->nodes--;
+                if(this->nodes==0){
+                    this->head= nullptr;
+                }
+                else{
+                    this->tail->next= nullptr;}
+            }}
 
         T operator[](int index) {
-            // TODO
+            if(this->head!= nullptr && index<this->nodes){
+                auto contador=0;
+                auto temp=this->head;
+                while(contador!=index){
+                    temp=temp->next;
+                    contador++;
+                }
+                return temp->data;
+            }
+            throw out_of_range("This index doesnt exist");
         }
 
-        bool empty() {
-            // TODO
-        }
-
-        int size() {
-            // TODO
-        }
-
-        void clear() {
-            // TODO
-        }
-
-        void sort() {
-            // TODO
-        }
-    
         void reverse() {
-            // TODO
+            if(this->nodes>1){
+                Node<T>* anterior= nullptr;
+                Node<T>* actual= this->head;
+                Node<T>* siguiente= actual->next;
+                while(actual!= nullptr){
+                    actual->next=anterior;
+                    actual->prev=siguiente;
+                    anterior=actual;
+                    actual=siguiente;
+                    if(siguiente!= nullptr)
+                        siguiente=siguiente->next;}
+                Node<T>* temporal= this->head;
+                this->head=this->tail;
+                this->tail=temporal;}
         }
 
         string name() {
@@ -66,8 +109,9 @@ class LinkedList : public List<T> {
         }
 
         void merge(LinkedList<T> list) {
-            // TODO
-        }
+            for(int i=0;i<list.size();i++){
+            this->push_back(list[i]);}
+            }
 };
 
 #endif

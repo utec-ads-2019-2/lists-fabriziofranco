@@ -29,11 +29,44 @@ class List {
         int size(){
             return nodes;
         }
-        virtual void clear() = 0;
-        virtual void sort() = 0;
+        void clear(){
+            while(this->nodes!=0){
+                pop_front();
+            }
+        }
+        void sort(){
+            if(this->head!= nullptr){
+                T desordenado[this->nodes];
+                auto temp=this->head;
+                for(int i=0;i<this->nodes;i++){
+                    desordenado[i]=temp->data;
+                    temp=temp->next;}
+
+                for(size_t numero_de_iteracion=0;numero_de_iteracion<this->nodes;numero_de_iteracion++){
+                    int id_del_minimo_elemento=numero_de_iteracion;
+                    for(size_t primer_elemento_considerado=numero_de_iteracion;primer_elemento_considerado<this->nodes;primer_elemento_considerado++){
+                        if(desordenado[primer_elemento_considerado]<desordenado[id_del_minimo_elemento])
+                            id_del_minimo_elemento=primer_elemento_considerado;
+                    }
+                    swap(desordenado[numero_de_iteracion],desordenado[id_del_minimo_elemento]);
+                }
+
+                temp=this->head;
+                for(int i=0;i<this->nodes;i++){
+                    temp->data=desordenado[i];
+                    temp=temp->next;
+                }
+            }
+        }
+        void print(){
+            auto temp= this->head;
+            for(int i=0;i<this->nodes;i++){
+                cout<<this->operator[](i)<<" ";
+            }
+            cout<<endl;
+        }
         virtual void reverse() = 0;
         virtual string name() = 0;
-
         ~List() {
             // TODO
         }

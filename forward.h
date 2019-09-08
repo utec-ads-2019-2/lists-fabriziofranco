@@ -75,35 +75,7 @@ public:
         throw out_of_range("This index doesnt exist");
     }
 
-    void clear() {
-        while(this->nodes!=0){
-            pop_back();
-    }}
 
-    void sort() {
-        if(this->head!= nullptr){
-            T desordenado[this->nodes];
-            auto temp=this->head;
-            for(int i=0;i<this->nodes;i++){
-                desordenado[i]=temp->data;
-                temp=temp->next;
-            }
-            for(size_t numero_de_iteracion=0;numero_de_iteracion<this->nodes;numero_de_iteracion++){
-                int id_del_minimo_elemento=numero_de_iteracion;
-                for(size_t primer_elemento_considerado=numero_de_iteracion;primer_elemento_considerado<this->nodes;primer_elemento_considerado++){
-                    if(desordenado[primer_elemento_considerado]<desordenado[id_del_minimo_elemento])
-                        id_del_minimo_elemento=primer_elemento_considerado;
-                }
-                swap(desordenado[numero_de_iteracion],desordenado[id_del_minimo_elemento]);
-            }
-            temp=this->head;
-            for(int i=0;i<this->nodes;i++){
-                temp->data=desordenado[i];
-                temp=temp->next;
-            }
-
-        }
-    }
     void reverse() {
         if(this->nodes>1){
             Node<T>* anterior= nullptr;
@@ -115,7 +87,6 @@ public:
                 actual=siguiente;
                 if(siguiente!= nullptr)
                     siguiente=siguiente->next;}
-
             Node<T>* temporal= this->head;
             this->head=this->tail;
             this->tail=temporal;}
