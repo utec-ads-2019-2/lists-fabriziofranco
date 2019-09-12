@@ -67,8 +67,17 @@ class List {
         }
         virtual void reverse() = 0;
         virtual string name() = 0;
+
         ~List() {
-            // TODO
+            auto temp=this->head; int contador_de_eliminaciones=0;
+            for(int i=0;i<this->nodes;i++){
+                auto x=temp;
+                if(x!= nullptr){
+                    temp=temp->next;
+                    delete x;
+                    contador_de_eliminaciones++;}
+            }
+            cout<<"Se han borrado "<<contador_de_eliminaciones<<" elementos"<<endl;
         }
 };
 

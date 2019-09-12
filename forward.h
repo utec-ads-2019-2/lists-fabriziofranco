@@ -96,12 +96,12 @@ public:
         return "Forward List";
     }
 
-    ForwardIterator<T> begin() {
-        // TODO
+    ForwardIterator<T> begin(){
+        return ForwardIterator<T> (this->head);
     }
 
-    ForwardIterator<T> end() {
-        // TODO
+    ForwardIterator<T> end(){
+        return ForwardIterator<T> (this->tail->next);
     }
 
     void merge(ForwardList<T> list) {

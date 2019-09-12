@@ -70,14 +70,23 @@ class LinkedList : public List<T> {
             if(this->head!= nullptr && index<this->nodes){
                 auto contador=0;
                 auto temp=this->head;
-                while(contador!=index){
-                    temp=temp->next;
-                    contador++;
+                if(index<=(this->size()/2)){
+                    while(contador!=index){
+                        temp=temp->next;
+                        contador++;
+                    }
                 }
+                else{
+                    temp=this->tail;
+                    while((index+contador)<this->size()-1){
+                        temp=temp->prev;
+                        contador++;
+                    }
+                }
+
                 return temp->data;
             }
-            throw out_of_range("This index doesnt exist");
-        }
+            throw out_of_range("This index doesnt exist");}
 
         void reverse() {
             if(this->nodes>1){
@@ -101,11 +110,11 @@ class LinkedList : public List<T> {
         }
 
         BidirectionalIterator<T> begin() {
-            // TODO
+            return BidirectionalIterator<T> (this->head);
         }
 
 	    BidirectionalIterator<T> end() {
-            // TODO
+            return BidirectionalIterator<T> (this->tail->next);
         }
 
         void merge(LinkedList<T> list) {
