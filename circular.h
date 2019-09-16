@@ -69,6 +69,7 @@ class CircularLinkedList : public List<T> {
 
 
         T operator[](int index) {
+            // En el caso de la circular no es necesaria la segunda validación
             if(this->head!= nullptr && index<this->nodes){
                 auto contador=0;
                 auto temp=this->head;
